@@ -16,6 +16,8 @@ spec:
       labels:
         app: vsphere-csi-controller
         role: vsphere-csi
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
     spec:
       serviceAccountName: vsphere-csi-controller
       nodeSelector:
